@@ -14,6 +14,7 @@ const styles = theme => ({
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
+    overflow: 'hidden',
   },
   contentAreaWrapper: {
     margin: '0px 10px 10px 10px',

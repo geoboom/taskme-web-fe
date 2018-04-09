@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
 import {
   TableCell,
   TableHead,
@@ -10,17 +11,25 @@ import Checkbox from 'material-ui/Checkbox';
 import Tooltip from 'material-ui/Tooltip';
 import cyan from 'material-ui/colors/cyan';
 
-const CustomTableHeadCell = ({ children, ...rest }) => (
+const customTableHeadCellStyle = theme => ({
+  tableCell: {
+    backgroundColor: cyan[100],
+    color: cyan[900],
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+  },
+});
+
+const CustomTableHeadCell = ({ classes, children, ...rest }) => (
   <TableCell
-    style={{
-      backgroundColor: cyan[100],
-      color: cyan[900],
-    }}
+    className={classes.tableCell}
     {...rest}
   >
     {children}
   </TableCell>
 );
+
+const StyledCustomTableHeadCell = withStyles(customTableHeadCellStyle)(CustomTableHeadCell);
 
 class CustomTableHead extends React.Component {
   createSortHandler = property => (event) => {
@@ -35,16 +44,16 @@ class CustomTableHead extends React.Component {
     return (
       <TableHead>
         <TableRow>
-          <CustomTableHeadCell padding="checkbox">
+          <StyledCustomTableHeadCell padding="checkbox">
             <Checkbox
               indeterminate={numSelected > 0 && numSelected < rowCount}
               checked={numSelected === rowCount}
               onChange={onSelectAllClick}
             />
-          </CustomTableHeadCell>
+          </StyledCustomTableHeadCell>
           {
             columnData.map(column => (
-              <CustomTableHeadCell
+              <StyledCustomTableHeadCell
                 key={column.id}
                 numeric={column.numeric}
                 padding={column.disablePadding ? 'none' : 'default'}
@@ -63,7 +72,7 @@ class CustomTableHead extends React.Component {
                     {column.label}
                   </TableSortLabel>
                 </Tooltip>
-              </CustomTableHeadCell>
+              </StyledCustomTableHeadCell>
               ), this)
           }
         </TableRow>

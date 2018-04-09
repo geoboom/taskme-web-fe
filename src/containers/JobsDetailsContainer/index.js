@@ -6,7 +6,6 @@ import TabbedContainerComponent from 'components/TabbedContainerComponent/Tabbed
 import JobsDetailsFormInput from 'components/JobsDetailsFormInput/JobsDetailsFormInput';
 import tabbedContent from 'containers/JobsDetailsContainer/jobDetailsTabs';
 
-import { JobFieldsContext } from 'views/Jobs/Details';
 
 const styles = theme => ({
   root: {
@@ -14,6 +13,7 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
+    margin: theme.spacing.unit,
   },
 });
 
@@ -37,16 +37,7 @@ class JobsDetailsContainer extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <JobFieldsContext.Consumer>
-          {
-            contextProps => (
-              <JobsDetailsFormInput
-                handleInputChange={contextProps.handleInputChange}
-                jobToAdd={contextProps.jobToAdd}
-              />
-            )
-          }
-        </JobFieldsContext.Consumer>
+        <JobsDetailsFormInput />
         <TabbedContainerComponent
           tabbedContent={tabbedContent}
         />
@@ -56,7 +47,6 @@ class JobsDetailsContainer extends React.Component {
 }
 
 JobsDetailsContainer.propTypes = {
-  job: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
 };
 

@@ -21,7 +21,7 @@ const styles = theme => ({
     overflow: 'hidden',
   },
   table: {
-    width: '100%',
+    // width: '100%',
   },
   tableWrapper: {
     flex: 15,

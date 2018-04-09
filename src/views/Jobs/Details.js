@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import { Redirect } from 'react-router-dom';
@@ -27,10 +27,10 @@ const styles = theme => ({
   },
 });
 
-class Details extends React.Component {
+class Details extends Component {
   state = {
     jobToAdd: {
-      id: null,
+      id: this.props.match.params.jobId ? this.props.match.params.jobId : null,
       desc: '',
       status: '',
       ddorpm: '',
@@ -40,7 +40,38 @@ class Details extends React.Component {
       taskList: [],
     },
     changesUnsaved: false,
+    validJobFound: true,
   };
+
+  componentWillMount() {
+    const { contextProps } = this.props;
+
+    if (this.state.jobToAdd.id) {
+      setTimeout(() => {
+        const job = contextProps.jobsData.find(jobObject =>
+          (jobObject.id.toString() === this.state.jobToAdd.id)
+        );
+        if (!job) {
+          this.setState({
+            validJobFound: false,
+          });
+        } else {
+          this.setState(prevState => ({
+            jobToAdd: {
+              ...prevState.jobToAdd,
+              desc: job.desc,
+              status: job.status,
+              ddorpm: job.ddorpm,
+              category: job.category,
+              associations: job.associations,
+              dateDue: job.dateDue,
+              taskList: job.taskList,
+            },
+          }));
+        }
+      }, 3000);
+    }
+  }
 
   handleInputChange = (event) => {
     const targetName = event.target.name;
@@ -65,6 +96,7 @@ class Details extends React.Component {
     const {
       desc, status, ddorpm, category, associations, dateDue,
     } = this.state.jobToAdd;
+
     if (!(desc && status && ddorpm && category && associations && dateDue)) {
       console.log('Not all fields are filled');
     } else {
@@ -74,14 +106,11 @@ class Details extends React.Component {
 
   render() {
     const {
-      classes, match, location, mainPath, contextProps, history,
+      classes, location, mainPath, history,
     } = this.props;
 
-    const { jobId } = match.params;
-    const job = contextProps.jobsData.find(jobObject => (jobObject.id.toString() === jobId));
-
     return (
-      job
+      this.state.validJobFound
         ?
           <div className={classes.root}>
             <Toolbar style={{ minHeight: '55px', padding: '0px 10px 0px 10px' }}>
@@ -112,9 +141,7 @@ class Details extends React.Component {
                   }
                 }
               >
-                <JobsDetailsContainer
-                  job={job}
-                />
+                <JobsDetailsContainer />
               </JobFieldsContext.Provider>
             </Paper>
           </div>
@@ -123,7 +150,6 @@ class Details extends React.Component {
     );
   }
 }
-
 
 Details.propTypes = {
   contextProps: PropTypes.object.isRequired,

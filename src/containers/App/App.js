@@ -18,7 +18,6 @@ const styles = theme => ({
     display: 'flex',
     zIndex: 1,
     overflow: 'hidden',
-    position: 'relative',
     backgroundColor: lightBlue[50],
   },
   toolbar: {
@@ -69,7 +68,8 @@ class App extends React.Component {
     is set to a new array [...this.state.jobsData, job].
    */
   updateJobsData = (job) => {
-    const oldJob = this.state.jobsData.find(jobObject => jobObject.id === job.id);
+    const oldJob = this.state.jobsData.find(jobObject => jobObject.id.toString() === job.id);
+
     if (oldJob) {
       const oldJobIndex = this.state.jobsData.indexOf(oldJob);
       this.setState(prevState => ({
