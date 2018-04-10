@@ -47,7 +47,7 @@ class CustomTableHead extends React.Component {
           <StyledCustomTableHeadCell padding="checkbox">
             <Checkbox
               indeterminate={numSelected > 0 && numSelected < rowCount}
-              checked={numSelected === rowCount}
+              checked={numSelected === rowCount && rowCount > 0}
               onChange={onSelectAllClick}
             />
           </StyledCustomTableHeadCell>

@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 let counter = 0;
 export function createData(
   desc,
@@ -6,9 +8,19 @@ export function createData(
   category,
   associations,
   dateDue,
-  taskList,
+  taskListToAdd,
 ) {
-  const dateCreated = '05/04/2018';
+
+  const taskList = taskListToAdd.map((task, index) => {
+    return (
+      {
+        ...task,
+        id: index + 1,
+      }
+    );
+  });
+
+  const dateCreated = moment().format('DD/MM/YYYY').toString();
   const tasksTotal = taskList.length;
   const tasksCompleted = taskList.filter(task => task.status === 'Completed').length;
 
@@ -23,9 +35,32 @@ export function createData(
     associations,
     dateCreated,
     dateDue,
+    taskList,
     tasksTotal,
     tasksCompleted,
   };
+}
+
+export function createTask(
+  name,
+  type,
+  status,
+  assignedTo,
+  estHours,
+  dateDue
+) {
+
+  const dateCreated = moment().format('DD/MM/YYYY').toString();
+
+  return ({
+    name,
+    type,
+    status,
+    assignedTo,
+    estHours,
+    dateCreated,
+    dateDue,
+  });
 }
 
 export const data = [
@@ -37,30 +72,30 @@ export const data = [
     'Tower Masts & Poles',
     '08/05/2018',
     [
-      {
-        id: 1,
-        name: 'Quarterly Maintenance (Tower Masts & Poles)',
-        type: 'ESCORT',
-        status: 'Completed',
-        assignedTo: [],
-        estHours: 2.5,
-      },
-      {
-        id: 2,
-        name: 'Quarterly Maintenance (Tower Masts & Poles)',
-        type: 'ESCORT',
-        status: 'Active',
-        assignedTo: [],
-        estHours: 2.5,
-      },
-      {
-        id: 3,
-        name: 'Quarterly Maintenance (Tower Masts & Poles)',
-        type: 'ESCORT',
-        status: 'Not Started, Unassigned',
-        assignedTo: [],
-        estHours: 2.5,
-      },
+      createTask(
+        'Quarterly Maintenance (Tower Masts & Poles)',
+        'ESCORT',
+        'Completed',
+        [],
+        2.5,
+        '20/05/2018',
+      ),
+      createTask(
+        'Quarterly Maintenance (Tower Masts & Poles)',
+        'ESCORT',
+        'Active',
+        [],
+        2.5,
+        '20/05/2018',
+      ),
+      createTask(
+        'Quarterly Maintenance (Tower Masts & Poles)',
+        'ESCORT',
+        'Not Started, Unassigned',
+        [],
+        2.5,
+        '20/05/2018',
+      ),
     ],
   ),
   createData(
@@ -71,19 +106,22 @@ export const data = [
     'Horticultural (Landscaping)',
     '18/05/2018',
     [
-      {
-        id: 1,
-        name: 'Quarterly Maintenance (Tower Masts & Poles)',
-        type: 'ESCORT',
-        status: 'Paused',
-        assignedTo: [],
-        estHours: 2.5,
-      },
+      createTask(
+        'Quarterly Maintenance (Tower Masts & Poles)',
+        'ESCORT',
+        'Paused',
+        [],
+        2.5,
+        '20/05/2018',
+      ),
     ],
   ),
 ];
 
-export const columnData = [
+export const jobColumnData = [
+  {
+    id: 'id', numeric: false, disablePadding: true, label: 'Job ID',
+  },
   {
     id: 'desc', numeric: false, disablePadding: true, label: 'Description',
   },
@@ -110,5 +148,32 @@ export const columnData = [
   },
   {
     id: 'tasksCompleted', numeric: true, disablePadding: false, label: 'Completed Tasks',
+  },
+];
+
+export const taskColumnData = [
+  {
+    id: 'id', numeric: false, disablePadding: true, label: 'Task ID',
+  },
+  {
+    id: 'name', numeric: false, disablePadding: true, label: 'Name',
+  },
+  {
+    id: 'type', numeric: true, disablePadding: false, label: 'Type',
+  },
+  {
+    id: 'assignedTo', numeric: true, disablePadding: false, label: 'Assigned To',
+  },
+  {
+    id: 'status', numeric: true, disablePadding: false, label: 'Status',
+  },
+  {
+    id: 'estHours', numeric: true, disablePadding: false, label: 'Est. Hrs',
+  },
+  {
+    id: 'dateCreated', numeric: true, disablePadding: false, label: 'Created Date',
+  },
+  {
+    id: 'dateDue', numeric: true, disablePadding: false, label: 'Due Date',
   },
 ];

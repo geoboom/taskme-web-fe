@@ -1,6 +1,6 @@
-import TabTasks from 'containers/JobsDetailsContainer/TabTasks';
-import TabQualityOfWork from 'containers/JobsDetailsContainer/TabQualityOfWork';
-import TabLog from 'containers/JobsDetailsContainer/TabLog';
+import TabTasks from 'views/Jobs/components/TabTasks';
+import TabQualityOfWork from 'views/Jobs/components/TabQualityOfWork';
+import TabLog from 'views/Jobs/components/TabLog';
 
 const tabbedContent =
   [

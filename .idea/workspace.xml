@@ -2,17 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ee01e6f-a32b-47da-b215-991be59cc939" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/CustomTable2/CustomTable2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/CustomTable2/CustomTableCell.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/CustomTable2/CustomTableHead.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/CustomTable2/CustomTableToolbar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/Jobs/components/TabTasks.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/containers/JobsDetailsContainer/TabTasks.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/CustomTable/CustomTable.js" afterPath="$PROJECT_DIR$/src/components/CustomTable/CustomTable.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/CustomTable/CustomTableHead.js" afterPath="$PROJECT_DIR$/src/components/CustomTable/CustomTableHead.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/JobsDetailsFormInput/JobsDetailsFormInput.js" afterPath="$PROJECT_DIR$/src/components/JobsDetailsFormInput/JobsDetailsFormInput.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/CustomTable/CustomTableToolbar.js" afterPath="$PROJECT_DIR$/src/components/CustomTable/CustomTableToolbar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/TabbedContainerComponent/TabbedContainerComponent.js" afterPath="$PROJECT_DIR$/src/components/TabbedContainerComponent/TabbedContainerComponent.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/App/App.js" afterPath="$PROJECT_DIR$/src/containers/App/App.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/JobsDetailsContainer/index.js" afterPath="$PROJECT_DIR$/src/containers/JobsDetailsContainer/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.css" afterPath="$PROJECT_DIR$/src/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/JobsDetailsContainer/jobDetailsTabs.js" afterPath="$PROJECT_DIR$/src/containers/JobsDetailsContainer/jobDetailsTabs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/helpers/jobsData.js" afterPath="$PROJECT_DIR$/src/helpers/jobsData.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Jobs/Details.js" afterPath="$PROJECT_DIR$/src/views/Jobs/Details.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Jobs/Main.js" afterPath="$PROJECT_DIR$/src/views/Jobs/Main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Jobs/index.js" afterPath="$PROJECT_DIR$/src/views/Jobs/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/containers/JobsDetailsContainer/TabLog.js" afterPath="$PROJECT_DIR$/src/views/Jobs/components/TabLog.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/containers/JobsDetailsContainer/TabQualityOfWork.js" afterPath="$PROJECT_DIR$/src/views/Jobs/components/TabQualityOfWork.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,14 +38,38 @@
         <state>
           <splitter split-orientation="horizontal" split-proportion="0.47460938">
             <split-first>
-              <leaf>
-                <file leaf-file-name="JobsDetailsFormInput.js" pinned="false" current-in-tab="true">
+              <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
+                <file leaf-file-name="JobsDetailsFormInput.js" pinned="false" current-in-tab="false">
                   <entry file="file://$PROJECT_DIR$/src/components/JobsDetailsFormInput/JobsDetailsFormInput.js">
                     <provider selected="true" editor-type-id="text-editor">
-                      <state relative-caret-position="374">
-                        <caret line="50" column="21" lean-forward="false" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+                      <state relative-caret-position="272">
+                        <caret line="61" column="34" lean-forward="false" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
                         <folding>
                           <element signature="e#0#26#0" expanded="true" />
+                        </folding>
+                      </state>
+                    </provider>
+                  </entry>
+                </file>
+                <file leaf-file-name="TabbedContainerComponent.js" pinned="false" current-in-tab="false">
+                  <entry file="file://$PROJECT_DIR$/src/components/TabbedContainerComponent/TabbedContainerComponent.js">
+                    <provider selected="true" editor-type-id="text-editor">
+                      <state relative-caret-position="782">
+                        <caret line="37" column="14" lean-forward="false" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
+                        <folding>
+                          <element signature="e#0#26#0" expanded="true" />
+                        </folding>
+                      </state>
+                    </provider>
+                  </entry>
+                </file>
+                <file leaf-file-name="TabTasks.js" pinned="false" current-in-tab="true">
+                  <entry file="file://$PROJECT_DIR$/src/views/Jobs/components/TabTasks.js">
+                    <provider selected="true" editor-type-id="text-editor">
+                      <state relative-caret-position="204">
+                        <caret line="29" column="12" lean-forward="false" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
+                        <folding>
+                          <element signature="e#0#41#0" expanded="true" />
                         </folding>
                       </state>
                     </provider>
@@ -43,12 +78,12 @@
               </leaf>
             </split-first>
             <split-second>
-              <leaf>
-                <file leaf-file-name="CustomTableHead.js" pinned="false" current-in-tab="false">
-                  <entry file="file://$PROJECT_DIR$/src/components/CustomTable/CustomTableHead.js">
+              <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
+                <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+                  <entry file="file://$PROJECT_DIR$/src/views/Jobs/index.js">
                     <provider selected="true" editor-type-id="text-editor">
-                      <state relative-caret-position="484">
-                        <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+                      <state relative-caret-position="544">
+                        <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
                         <folding>
                           <element signature="e#0#26#0" expanded="true" />
                         </folding>
@@ -56,14 +91,34 @@
                     </provider>
                   </entry>
                 </file>
-                <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
-                  <entry file="file://$PROJECT_DIR$/src/views/Jobs/index.js">
+                <file leaf-file-name="CustomTableToolbar.js" pinned="false" current-in-tab="false">
+                  <entry file="file://$PROJECT_DIR$/src/components/CustomTable/CustomTableToolbar.js">
                     <provider selected="true" editor-type-id="text-editor">
-                      <state relative-caret-position="408">
-                        <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+                      <state relative-caret-position="238">
+                        <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
                         <folding>
                           <element signature="e#0#26#0" expanded="true" />
                         </folding>
+                      </state>
+                    </provider>
+                  </entry>
+                </file>
+                <file leaf-file-name="jobsData.js" pinned="false" current-in-tab="true">
+                  <entry file="file://$PROJECT_DIR$/src/helpers/jobsData.js">
+                    <provider selected="true" editor-type-id="text-editor">
+                      <state relative-caret-position="204">
+                        <caret line="122" column="65" lean-forward="false" selection-start-line="122" selection-start-column="65" selection-end-line="122" selection-end-column="65" />
+                        <folding />
+                      </state>
+                    </provider>
+                  </entry>
+                </file>
+                <file leaf-file-name="CustomTable.js" pinned="false" current-in-tab="false">
+                  <entry file="file://$PROJECT_DIR$/src/components/CustomTable/CustomTable.js">
+                    <provider selected="true" editor-type-id="text-editor">
+                      <state relative-caret-position="272">
+                        <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+                        <folding />
                       </state>
                     </provider>
                   </entry>
@@ -85,24 +140,16 @@
     <splitter split-orientation="horizontal" split-proportion="0.48538718">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-          <file leaf-file-name="Details.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Details.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/views/Jobs/Details.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="45" column="12" lean-forward="false" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
+                <state relative-caret-position="408">
+                  <caret line="110" column="43" lean-forward="false" selection-start-line="110" selection-start-column="43" selection-end-line="110" selection-end-column="43" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
+                    <element signature="n#!!block;n#componentDidMount#0;n#Details#0" expanded="false" />
+                    <element signature="e#2388#2747#0" expanded="false" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/index.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-                  <folding />
                 </state>
               </provider>
             </entry>
@@ -110,8 +157,18 @@
           <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/containers/JobsDetailsContainer/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="884">
-                  <caret line="39" column="29" lean-forward="false" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
+                <state relative-caret-position="136">
+                  <caret line="4" column="34" lean-forward="false" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="CustomTable2.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/components/CustomTable2/CustomTable2.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="850">
+                  <caret line="189" column="41" lean-forward="false" selection-start-line="189" selection-start-column="41" selection-end-line="189" selection-end-column="41" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -123,23 +180,24 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-          <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/containers/App/App.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="680">
-                  <caret line="72" column="16" lean-forward="false" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
+                <state relative-caret-position="544">
+                  <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
+                    <element signature="e#46#72#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Main.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Main.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/views/Jobs/Main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="34" column="30" lean-forward="false" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+                <state relative-caret-position="690">
+                  <caret line="60" column="18" lean-forward="false" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -176,31 +234,35 @@
         <option value="$PROJECT_DIR$/src/components/CustomTable/CustomTableCell.js" />
         <option value="$PROJECT_DIR$/src/components/TopAppBar/TopAppBar.js" />
         <option value="$PROJECT_DIR$/src/views/Jobs/Jobs.js" />
-        <option value="$PROJECT_DIR$/src/components/CustomTable/CustomTableToolbar.js" />
         <option value="$PROJECT_DIR$/src/views/Jobs/JobsMain.js" />
         <option value="$PROJECT_DIR$/src/routes/appRoutes.js" />
         <option value="$PROJECT_DIR$/src/views/Jobs/JobsDetails.js" />
         <option value="$PROJECT_DIR$/src/components/TabbedContainer/TabbedContainer.js" />
         <option value="$PROJECT_DIR$/src/containers/JobsDetailsContainer/TabQualityOfWork.js" />
         <option value="$PROJECT_DIR$/src/containers/JobsDetailsContainer/TabLog.js" />
-        <option value="$PROJECT_DIR$/src/containers/JobsDetailsContainer/jobDetailsTabs.js" />
-        <option value="$PROJECT_DIR$/src/components/TabbedContainerComponent/TabbedContainerComponent.js" />
-        <option value="$PROJECT_DIR$/src/views/Jobs/index.js" />
         <option value="$PROJECT_DIR$/src/containers/JobsDetailsContainer/TabTasks.js" />
-        <option value="$PROJECT_DIR$/src/helpers/jobsData.js" />
         <option value="$PROJECT_DIR$/src/components/NavDrawer/NavDrawer.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/views/Jobs/Main.js" />
-        <option value="$PROJECT_DIR$/src/components/CustomTable/CustomTable.js" />
         <option value="$PROJECT_DIR$/src/index.css" />
-        <option value="$PROJECT_DIR$/src/components/CustomTable/CustomTableHead.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/components/JobsDetailsFormInput/JobsDetailsFormInput.js" />
-        <option value="$PROJECT_DIR$/src/containers/JobsDetailsContainer/index.js" />
         <option value="$PROJECT_DIR$/src/containers/App/App.js" />
+        <option value="$PROJECT_DIR$/src/containers/JobsDetailsContainer/jobDetailsTabs.js" />
+        <option value="$PROJECT_DIR$/src/views/Jobs/index.js" />
+        <option value="$PROJECT_DIR$/src/components/CustomTable/CustomTableToolbar.js" />
+        <option value="$PROJECT_DIR$/src/views/Jobs/Main.js" />
+        <option value="$PROJECT_DIR$/src/containers/JobsDetailsContainer/index.js" />
+        <option value="$PROJECT_DIR$/src/components/CustomTable2/CustomTable.js" />
+        <option value="$PROJECT_DIR$/src/components/CustomTable/CustomTable.js" />
+        <option value="$PROJECT_DIR$/src/components/TabbedContainerComponent/TabbedContainerComponent.js" />
+        <option value="$PROJECT_DIR$/src/components/CustomTable/CustomTableHead.js" />
+        <option value="$PROJECT_DIR$/src/components/CustomTable2/CustomTableHead.js" />
         <option value="$PROJECT_DIR$/src/views/Jobs/Details.js" />
+        <option value="$PROJECT_DIR$/src/views/Jobs/components/TabTasks.js" />
+        <option value="$PROJECT_DIR$/src/components/CustomTable2/CustomTable2.js" />
+        <option value="$PROJECT_DIR$/src/helpers/jobsData.js" />
       </list>
     </option>
   </component>
@@ -246,8 +308,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -271,7 +332,7 @@
               <item name="taskme-web-fe" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="JobsDetailsFormInput" type="462c0819:PsiDirectoryNode" />
+              <item name="CustomTable2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="taskme-web-fe" type="b2602c69:ProjectViewProjectNode" />
@@ -299,12 +360,21 @@
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="Jobs" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="taskme-web-fe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="taskme-web-fe" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="Jobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="AndroidView" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -326,11 +396,15 @@
     <property name="node.js.detected.package.jscs" value="true" />
     <property name="node.js.selected.package.jscs" value="" />
     <property name="javascript.nodejs.core.library.configured.version" value="9.3.0" />
-    <property name="SearchEverywhereHistoryKey" value="Jobs/index&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/views/Jobs/index.js&#10;index&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/containers/JobsDetailsContainer/index.js&#10;index.html&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/public/index.html&#10;src/index.js&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/index.js&#10;src/index&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/index.css&#10;customtable&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/components/CustomTable/CustomTableHead.js&#10;JobsDetailsContainer&#9;null&#9;null&#10;customtableheadcell&#9;null&#9;null&#10;customtablecell&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/components/CustomTable/CustomTableCell.js&#10;customtablehead&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/components/CustomTable/CustomTableHead.js&#10;App&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/containers/App/App.js&#10;main&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/views/Jobs/Main.js&#10;nav&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/components/NavDrawer/NavDrawer.js&#10;jobs&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/helpers/jobsData.js&#10;Details&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/views/Jobs/Details.js&#10;helpers/j&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/helpers/jobsData.js&#10;jobdetailstab&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/containers/JobsDetailsContainer/jobDetailsTabs.js&#10;jobdetai&#9;null&#9;null&#10;jobsdet&#9;null&#9;null&#10;jobs/inde&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/views/Jobs/index.js&#10;CustomTable&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/components/CustomTable/CustomTable.js&#10;JobsDe&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/views/Jobs/JobsDetails.js&#10;jobsda&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/helpers/jobsData.js&#10;jobsD&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/helpers/jobsData.js&#10;topap&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/components/TopAppBar/TopAppBar.js&#10;CustomTableh&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/components/CustomTable/CustomTableHead.js&#10;das&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/views/Dashboard/Dashboard.js&#10;pack&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/package.json&#10;topapp&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/components/TopAppBar/TopAppBar.js&#10;index.js&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/index.js" />
+    <property name="SearchEverywhereHistoryKey" value="CustomTableHead&#9;null&#9;null&#10;customtablehead&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/components/CustomTable/CustomTableHead.js&#10;customtable&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/components/CustomTable/CustomTableToolbar.js&#10;customtable.js&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/components/CustomTable/CustomTable.js&#10;tasks&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/views/Jobs/components/TabTasks.js&#10;tabbedcontainer&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/components/TabbedContainerComponent/TabbedContainerComponent.js&#10;jobdetailsform&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/components/JobsDetailsFormInput/JobsDetailsFormInput.js&#10;jobsdata&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/helpers/jobsData.js&#10;jobs/index&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/views/Jobs/index.js&#10;Jobs/index&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/views/Jobs/index.js&#10;index&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/containers/JobsDetailsContainer/index.js&#10;index.html&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/public/index.html&#10;src/index.js&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/index.js&#10;src/index&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/index.css&#10;JobsDetailsContainer&#9;null&#9;null&#10;customtableheadcell&#9;null&#9;null&#10;customtablecell&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/components/CustomTable/CustomTableCell.js&#10;App&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/containers/App/App.js&#10;main&#9;FILE&#9;file://D:/Coding/Web/NS/taskme-web-fe/src/views/Jobs/Main.js&#10;nav&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/components/NavDrawer/NavDrawer.js&#10;jobs&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/helpers/jobsData.js&#10;Details&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/views/Jobs/Details.js&#10;helpers/j&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/helpers/jobsData.js&#10;jobdetailstab&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/containers/JobsDetailsContainer/jobDetailsTabs.js&#10;jobdetai&#9;null&#9;null&#10;jobsdet&#9;null&#9;null&#10;jobs/inde&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/views/Jobs/index.js&#10;CustomTable&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/components/CustomTable/CustomTable.js&#10;JobsDe&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/views/Jobs/JobsDetails.js&#10;jobsda&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/helpers/jobsData.js&#10;jobsD&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/helpers/jobsData.js&#10;topap&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/components/TopAppBar/TopAppBar.js&#10;CustomTableh&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/components/CustomTable/CustomTableHead.js&#10;das&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/views/Dashboard/Dashboard.js&#10;pack&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/package.json&#10;topapp&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/components/TopAppBar/TopAppBar.js&#10;index.js&#9;FILE&#9;file://D:/Coding/Web/NS/react-redux-egghead-tut-01/src/index.js" />
     <property name="js.last.introduce.type" value="CONST" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Coding\Web\NS\taskme-web-fe\src\components" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Coding\Web\NS\taskme-web-fe\src\views\Jobs\components" />
       <recent name="D:\Coding\Web\NS\react-redux-egghead-tut-01\src\views\JobsMain" />
       <recent name="D:\Coding\Web\NS\react-redux-egghead-tut-01\src\containers\App" />
       <recent name="D:\Coding\Web\NS\react-redux-egghead-tut-01\src\components" />
@@ -471,6 +545,7 @@
       <workItem from="1522734983100" duration="91746000" />
       <workItem from="1522963691507" duration="7786000" />
       <workItem from="1523078327691" duration="13529000" />
+      <workItem from="1523252564029" duration="26751000" />
     </task>
     <task id="LOCAL-00001" summary="edited README.md">
       <created>1522966306071</created>
@@ -483,11 +558,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129772000" />
+    <option name="totallyTimeSpent" value="156523000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="3856" height="2136" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -496,19 +570,20 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23484462" sideWeight="0.5015625" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23469388" sideWeight="0.4984375" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23469388" sideWeight="0.4984375" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19387755" sideWeight="0.49895832" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13567708" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -517,7 +592,6 @@
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959756" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,12 +609,34 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/components/CustomTable/CustomTableHead.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Jobs/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/Jobs/Details.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3876">
           <caret line="114" column="33" lean-forward="false" selection-start-line="114" selection-start-column="33" selection-end-line="114" selection-end-column="33" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+            <element signature="n#!!block;n#componentDidMount#0;n#Details#0" expanded="false" />
+            <element signature="e#2388#2747#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -549,9 +645,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="30" lean-forward="false" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -571,6 +665,7 @@
           <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="e#46#72#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -608,7 +703,6 @@
     <entry file="file://$PROJECT_DIR$/src/routes/index.js" />
     <entry file="file://$PROJECT_DIR$/src/views/Dashboard/Dashboard.js" />
     <entry file="file://$PROJECT_DIR$/src/containers/JobsDetailsContainer/TabTasks" />
-    <entry file="file://$PROJECT_DIR$/src/containers/JobsDetailsContainer/jobDetailsTabs.js" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/extLibs/http_github.com_DefinitelyTyped_DefinitelyTyped_raw_master_types_react_index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -617,13 +711,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/TopAppBar/TopAppBar.js" />
-    <entry file="file://$PROJECT_DIR$/src/containers/JobsDetailsContainer/TabQualityOfWork.js" />
-    <entry file="file://$PROJECT_DIR$/src/containers/JobsDetailsContainer/TabLog.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/CustomTable/CustomTableToolbar.js" />
+    <entry file="file://$PROJECT_DIR$/src/views/Jobs/components/TabQualityOfWork.js" />
+    <entry file="file://$PROJECT_DIR$/src/views/Jobs/components/TabLog.js" />
     <entry file="file://$PROJECT_DIR$/src/routes/appRoutes.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/TabbedContainerComponent/TabbedContainerComponent.js" />
-    <entry file="file://$PROJECT_DIR$/src/containers/JobsDetailsContainer/TabTasks.js" />
-    <entry file="file://$PROJECT_DIR$/src/helpers/jobsData.js" />
     <entry file="file://$PROJECT_DIR$/src/components/NavDrawer/NavDrawer.js" />
     <entry file="file://$PROJECT_DIR$/package.json" />
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -643,19 +733,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/CustomTable/CustomTable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="3" lean-forward="false" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -667,42 +748,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/CustomTable/CustomTableHead.js">
+    <entry file="file://$PROJECT_DIR$/src/containers/JobsDetailsContainer/jobDetailsTabs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+        <state relative-caret-position="612">
+          <caret line="18" column="3" lean-forward="false" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Jobs/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Jobs/Main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="34" column="30" lean-forward="false" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/App/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="72" column="16" lean-forward="false" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#0#54#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -715,32 +766,137 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/JobsDetailsContainer/index.js">
+    <entry file="file://$PROJECT_DIR$/src/components/JobsDetailsFormInput/JobsDetailsFormInput.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="39" column="29" lean-forward="false" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
+        <state relative-caret-position="272">
+          <caret line="61" column="34" lean-forward="false" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/JobsDetailsFormInput/JobsDetailsFormInput.js">
+    <entry file="file://$PROJECT_DIR$/src/containers/App/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#46#72#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/CustomTable2/CustomTableHead.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="48" column="14" lean-forward="false" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/CustomTable/CustomTableHead.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
-          <caret line="50" column="21" lean-forward="false" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+          <caret line="49" column="62" lean-forward="false" selection-start-line="49" selection-start-column="62" selection-end-line="49" selection-end-column="62" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/TabbedContainerComponent/TabbedContainerComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="37" column="14" lean-forward="false" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/JobsDetailsContainer/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="4" column="34" lean-forward="false" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/Jobs/Details.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="45" column="12" lean-forward="false" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
+        <state relative-caret-position="408">
+          <caret line="110" column="43" lean-forward="false" selection-start-line="110" selection-start-column="43" selection-end-line="110" selection-end-column="43" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+            <element signature="n#!!block;n#componentDidMount#0;n#Details#0" expanded="false" />
+            <element signature="e#2388#2747#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/CustomTable/CustomTable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/CustomTable/CustomTableToolbar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Jobs/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Jobs/components/TabTasks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="29" column="12" lean-forward="false" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/CustomTable2/CustomTable2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="189" column="41" lean-forward="false" selection-start-line="189" selection-start-column="41" selection-end-line="189" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helpers/jobsData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="122" column="65" lean-forward="false" selection-start-line="122" selection-start-column="65" selection-end-line="122" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Jobs/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="60" column="18" lean-forward="false" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>

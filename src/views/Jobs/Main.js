@@ -6,7 +6,7 @@ import Toolbar from 'material-ui/Toolbar';
 import Button from 'material-ui/Button';
 
 import CustomTable from 'components/CustomTable/CustomTable';
-import { columnData } from 'helpers/jobsData';
+import { jobColumnData } from 'helpers/jobsData';
 import { JobsContext } from 'containers/App/App';
 
 const styles = theme => ({
@@ -54,16 +54,25 @@ const Main = ({ classes, history, location }) => {
             border: '0.5px solid darkgrey',
           }}
         />
-        <Button variant="raised" color="primary">
+        <Button
+          variant="raised"
+          color="primary"
+          onClick={
+            () => {
+              history.push(`${location.pathname}/new`);
+            }
+          }
+        >
           New
         </Button>
       </Toolbar>
       <Paper elevation={1} className={classes.contentAreaWrapper}>
         <Paper className={classes.contentArea}>
            <CustomTable
+             tableTitle="Jobs"
              handleRowClick={loadJobDetails}
              data={contextProps.jobsData}
-             columnData={columnData}
+             columnData={jobColumnData}
            />
         </Paper>
       </Paper>

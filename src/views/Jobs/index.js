@@ -6,10 +6,28 @@ import JobsMain from 'views/Jobs/Main';
 import JobsDetails from 'views/Jobs/Details';
 
 const Jobs = ({ location, mainPath }) => {
+  const renderJobDetails = ({
+    match, history
+  }) => (
+    <JobsDetails
+      history={history}
+      match={match}
+      mainPath={mainPath}
+      location={location}
+    />
+  );
+
   return (
     <Switch>
       <Route exact path={mainPath} component={JobsMain} />
-      <Route path={`${mainPath}/details/:jobId`} render={({ match, history }) => <JobsDetails history={history} match={match} mainPath={mainPath} location={location} />} />
+      <Route
+        exact path={`${mainPath}/new`}
+        render={renderJobDetails}
+      />
+      <Route
+        path={`${mainPath}/details/:jobId`}
+        render={renderJobDetails}
+      />
       <Redirect from={location.pathname} to={mainPath} />
     </Switch>
   );

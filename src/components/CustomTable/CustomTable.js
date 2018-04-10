@@ -119,7 +119,7 @@ class CustomTable extends React.Component {
   );
 
   render() {
-    const { classes } = this.props;
+    const { classes, columnData, tableTitle } = this.props;
     const {
       sortedData,
       order,
@@ -133,6 +133,7 @@ class CustomTable extends React.Component {
       <div className={classes.root}>
         <CustomTableToolbar
           numSelected={selected.length}
+          tableTitle={tableTitle}
         />
         <div
           className={classes.tableWrapper}
@@ -147,7 +148,7 @@ class CustomTable extends React.Component {
               onSelectAllClick={this.handleSelectAllClick}
               onRequestSort={this.handleRequestSort}
               rowCount={sortedData.length}
-              columnData={this.props.columnData}
+              columnData={columnData}
             />
             <TableBody>
               {sortedData.slice(
@@ -164,7 +165,6 @@ class CustomTable extends React.Component {
                     selected={isSelected}
                     onClick={(event) => this.handleRowClick(event, n.id)}
                     style={{ cursor: 'pointer' }}
-                    // style={index % 2 === 0 ? { background: '#F5F5F5' } : { background: 'white' }}
                   >
                     <CustomTableCell
                       padding="checkbox"
@@ -172,19 +172,19 @@ class CustomTable extends React.Component {
                     >
                       <Checkbox checked={isSelected} />
                     </CustomTableCell>
-                    <CustomTableCell padding="none">
-                      {n.desc}
-                    </CustomTableCell>
-                    <CustomTableCell numeric>
-                      {n.status}
-                    </CustomTableCell>
-                    <CustomTableCell numeric>{n.ddorpm}</CustomTableCell>
-                    <CustomTableCell numeric>{n.category}</CustomTableCell>
-                    <CustomTableCell numeric>{n.associations}</CustomTableCell>
-                    <CustomTableCell numeric>{n.dateCreated}</CustomTableCell>
-                    <CustomTableCell numeric>{n.dateDue}</CustomTableCell>
-                    <CustomTableCell numeric>{n.tasksTotal}</CustomTableCell>
-                    <CustomTableCell numeric>{n.tasksCompleted}</CustomTableCell>
+                    {
+                      columnData.map((col) => {
+                        return (
+                          <CustomTableCell
+                            padding={col.disablePadding ? "none" : "default"}
+                            numeric={col.numeric}
+                            key={col.id}
+                          >
+                            {n[col.id]}
+                          </CustomTableCell>
+                        );
+                      })
+                    }
                   </TableRow>
                 );
               })}
@@ -217,6 +217,7 @@ CustomTable.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   columnData: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleRowClick: PropTypes.func.isRequired,
+  tableTitle: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(CustomTable);

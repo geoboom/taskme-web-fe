@@ -40,7 +40,7 @@ const toolbarStyles = theme => ({
 });
 
 const CustomTableToolbar = (props) => {
-  const { numSelected, classes } = props;
+  const { tableTitle, numSelected, classes } = props;
 
   return (
     <Toolbar
@@ -55,7 +55,7 @@ const CustomTableToolbar = (props) => {
           </Typography>
         ) : (
           <Typography variant="title" style={{ color: cyan[900] }}>
-            Jobs
+            {tableTitle}
           </Typography>
         )}
       </div>
@@ -82,6 +82,7 @@ const CustomTableToolbar = (props) => {
 CustomTableToolbar.propTypes = {
   classes: PropTypes.object.isRequired,
   numSelected: PropTypes.number.isRequired,
+  tableTitle: PropTypes.string.isRequired,
 };
 
 export default withStyles(toolbarStyles)(CustomTableToolbar);

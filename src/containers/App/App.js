@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import { Switch, Redirect, Route } from 'react-router-dom';
 import lightBlue from 'material-ui/colors/lightBlue';
+import moment from 'moment';
 
 import TopAppBar from 'components/TopAppBar/TopAppBar';
 import NavDrawer from 'components/NavDrawer/NavDrawer';
@@ -67,22 +68,44 @@ class App extends React.Component {
     this.state.jobsData is set to that new array. Otherwise, this.state.jobsData
     is set to a new array [...this.state.jobsData, job].
    */
-  updateJobsData = (job) => {
-    const oldJob = this.state.jobsData.find(jobObject => jobObject.id.toString() === job.id);
-
-    if (oldJob) {
+  updateJobsData = async (job) => {
+    if (job.id) {
+      const oldJob = this.state.jobsData.find(jobObject => jobObject.id === parseInt(job.id, 10));
       const oldJobIndex = this.state.jobsData.indexOf(oldJob);
       this.setState(prevState => ({
         jobsData: [
           ...prevState.jobsData.slice(0, oldJobIndex),
-          job,
+          {...oldJob, ...job, id: parseInt(job.id, 10), dateDue: moment(job.dateDue, 'YYYY-MM-DD').format('DD/MM/YYYY').toString()},
           ...prevState.jobsData.slice(oldJobIndex + 1),
         ],
       }));
+
+      return ({
+        status: 'job_saved',
+      });
+
     } else {
-      this.setState(prevState => ({
-        jobsData: [...prevState.jobsData, job],
+      const largestIdJob = this.state.jobsData.reduce((largest, curr) => {
+        return curr.id > largest.id ? curr : largest;
+      });
+
+      const newJob =
+        {
+          ...job,
+          id: largestIdJob.id + 1,
+          dateCreated: moment().format('DD/MM/YYYY').toString(),
+          tasksTotal: 0,
+          tasksCompleted: 0,
+        };
+
+      await this.setState(prevState => ({
+        jobsData: [...prevState.jobsData, newJob],
       }));
+
+      return ({
+        status: 'new_job_created',
+        payload: newJob,
+      });
     }
   };
 
@@ -117,6 +140,7 @@ class App extends React.Component {
 App.propTypes = {
   classes: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(App);

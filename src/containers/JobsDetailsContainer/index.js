@@ -14,25 +14,11 @@ const styles = theme => ({
     flexDirection: 'column',
     justifyContent: 'space-between',
     margin: theme.spacing.unit,
+    overflow: 'hidden',
   },
 });
 
 class JobsDetailsContainer extends React.Component {
-  state = {
-    categoryFilter: '',
-    associationsFilter: '',
-    categorySelected: null,
-    associationsSelected: null,
-    newTasks: [],
-    tempTask: {
-      id: null,
-      name: '',
-      type: '',
-      assignedTo: [],
-      estHours: 0,
-    },
-  };
-
   render() {
     const { classes } = this.props;
     return (

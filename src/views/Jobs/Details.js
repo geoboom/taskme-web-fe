@@ -5,10 +5,11 @@ import { Redirect } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
 import Toolbar from 'material-ui/Toolbar';
 import Button from 'material-ui/Button';
+import moment from 'moment';
 
 import JobsDetailsContainer from 'containers/JobsDetailsContainer';
 import { JobsContext } from 'containers/App/App';
-import { createData } from 'helpers/jobsData';
+import { taskColumnData, createData } from 'helpers/jobsData';
 
 export const JobFieldsContext = React.createContext();
 
@@ -39,21 +40,28 @@ class Details extends Component {
       dateDue: '',
       taskList: [],
     },
+    newTask: {
+      name: '',
+      type: '',
+      assignedTo: [],
+      status: '',
+      hrsEst: 0,
+    },
     changesUnsaved: false,
-    validJobFound: true,
+    loadProgress: 'loading',
   };
 
-  componentWillMount() {
+  componentDidMount() {
     const { contextProps } = this.props;
 
     if (this.state.jobToAdd.id) {
       setTimeout(() => {
         const job = contextProps.jobsData.find(jobObject =>
-          (jobObject.id.toString() === this.state.jobToAdd.id)
+          (jobObject.id === parseInt(this.state.jobToAdd.id, 10))
         );
         if (!job) {
           this.setState({
-            validJobFound: false,
+            loadProgress: 'job_not_found',
           });
         } else {
           this.setState(prevState => ({
@@ -64,12 +72,20 @@ class Details extends Component {
               ddorpm: job.ddorpm,
               category: job.category,
               associations: job.associations,
-              dateDue: job.dateDue,
+              dateDue: moment(job.dateDue, 'DD/MM/YYYY').format('YYYY-MM-DD').toString(),
+              dateCreated: '',
+              tasksTotal: '',
+              tasksCompleted: '',
               taskList: job.taskList,
             },
+            loadProgress: 'loaded',
           }));
         }
-      }, 3000);
+      }, 1500);
+    } else {
+      this.setState({
+        loadProgress: 'loaded',
+      });
     }
   }
 
@@ -91,16 +107,59 @@ class Details extends Component {
     });
   };
 
-  handleJobSave = (event) => {
-    const { updateJobsData } = this.props.contextProps;
+  handleTaskDelete = (taskList) => {
+    console.log('handleTaskDelete clicked');
+  };
+
+  handleTaskAdd = (taskList) => {
+    let taskListToAdd = [];
+    for (let i = 0; i < taskList.length; i += 1) {
+      const {
+        name, type, status, hrsEst, dateDue,
+      } = taskList[i];
+
+      if (!(name && type && status && hrsEst && dateDue)) {
+        alert('Please fill in all required fields!');
+        return;
+      }
+
+      taskListToAdd = [...taskListToAdd, taskList[i]];
+    }
+
+    this.setState(prevState => ({
+      jobToAdd: {
+        ...prevState.jobToAdd,
+        taskList: [
+          ...prevState.jobToAdd.taskList,
+          ...taskListToAdd,
+        ],
+      }
+    }));
+  };
+
+  handleJobSave = async (event) => {
+    const {
+      contextProps, history, mainPath
+    } = this.props;
+    const { updateJobsData } = contextProps;
     const {
       desc, status, ddorpm, category, associations, dateDue,
     } = this.state.jobToAdd;
 
     if (!(desc && status && ddorpm && category && associations && dateDue)) {
-      console.log('Not all fields are filled');
+      alert('Please fill in all required fields!');
     } else {
-      updateJobsData(this.state.jobToAdd);
+      const res = await updateJobsData(this.state.jobToAdd);
+
+      if (res.status === 'new_job_created') {
+        history.replace(`${mainPath}/details/${res.payload.id}`);
+        this.setState(prevState => ({
+          jobToAdd: {
+            ...prevState.jobToAdd,
+            ...res.payload,
+          },
+        }));
+      }
     }
   };
 
@@ -109,44 +168,62 @@ class Details extends Component {
       classes, location, mainPath, history,
     } = this.props;
 
-    return (
-      this.state.validJobFound
-        ?
-          <div className={classes.root}>
-            <Toolbar style={{ minHeight: '55px', padding: '0px 10px 0px 10px' }}>
-              <Button variant="raised" color="secondary" onClick={() => history.push(mainPath)}>
-                Back
-              </Button>
-              <hr
-                style={{
-                padding: 0,
-                margin: 0,
-                marginLeft: '7px',
-                marginRight: '7px',
-                height: '35px',
-                width: '0',
-                border: '0.5px solid darkgrey',
-              }}
-              />
-              <Button variant="raised" color="primary" onClick={this.handleJobSave}>
-                Save
-              </Button>
-            </Toolbar>
-            <Paper elevation={1} className={classes.contentAreaWrapper}>
-              <JobFieldsContext.Provider
-                value={
-                  {
-                    handleInputChange: this.handleInputChange,
-                    jobToAdd: this.state.jobToAdd,
-                  }
+    const renderOutput = () => {
+      switch (this.state.loadProgress) {
+        case 'loading':
+          return <div>Loading...</div>;
+        case 'loaded':
+          return (
+            <JobFieldsContext.Provider
+              value={
+                {
+                  handleTaskAdd: this.handleTaskAdd,
+                  handleTaskDelete: this.handleTaskDelete,
+                  handleInputChange: this.handleInputChange,
+                  jobToAdd: this.state.jobToAdd,
                 }
-              >
-                <JobsDetailsContainer />
-              </JobFieldsContext.Provider>
-            </Paper>
-          </div>
-        :
-          <Redirect from={location.pathname} to={mainPath} />
+              }
+            >
+              <JobsDetailsContainer />
+            </JobFieldsContext.Provider>
+          );
+        case 'job_not_found':
+          return <Redirect from={location.pathname} to={mainPath} />;
+        default:
+          return null;
+      }
+    };
+
+    return (
+      <div className={classes.root}>
+        <Toolbar style={{ minHeight: '55px', padding: '0px 10px 0px 10px' }}>
+          <Button variant="raised" color="secondary" onClick={() => history.push(mainPath)}>
+            Back
+          </Button>
+          <hr
+            style={{
+              padding: 0,
+              margin: 0,
+              marginLeft: '7px',
+              marginRight: '7px',
+              height: '35px',
+              width: '0',
+              border: '0.5px solid darkgrey',
+            }}
+          />
+          <Button
+            variant="raised"
+            color="primary"
+            onClick={this.handleJobSave}
+            disabled={this.state.loadProgress !== 'loaded'}
+          >
+            Save
+          </Button>
+        </Toolbar>
+        <Paper elevation={1} className={classes.contentAreaWrapper}>
+          {renderOutput()}
+        </Paper>
+      </div>
     );
   }
 }

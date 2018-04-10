@@ -8,6 +8,9 @@ import Tabs, { Tab } from 'material-ui/Tabs';
 const styles = theme => ({
   root: {
     flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    overflow: 'hidden',
   },
 });
 
