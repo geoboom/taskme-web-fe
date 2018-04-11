@@ -24,9 +24,9 @@ class JobsDetailsContainer extends React.Component {
     return (
       <div className={classes.root}>
         <JobsDetailsFormInput />
-        <TabbedContainerComponent
-          tabbedContent={tabbedContent}
-        />
+        {/*<TabbedContainerComponent*/}
+          {/*tabbedContent={tabbedContent}*/}
+        {/*/>*/}
       </div>
     );
   }

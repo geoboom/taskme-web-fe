@@ -20,7 +20,7 @@ export function createData(
     );
   });
 
-  const dateCreated = moment().format('DD/MM/YYYY').toString();
+  const dateCreated = moment().format('YYYY-MM-DD').toString();
   const tasksTotal = taskList.length;
   const tasksCompleted = taskList.filter(task => task.status === 'Completed').length;
 
@@ -34,7 +34,7 @@ export function createData(
     category,
     associations,
     dateCreated,
-    dateDue,
+    dateDue: moment().add(7, 'days').format('YYYY-MM-DD').toString(),
     taskList,
     tasksTotal,
     tasksCompleted,
@@ -50,7 +50,7 @@ export function createTask(
   dateDue
 ) {
 
-  const dateCreated = moment().format('DD/MM/YYYY').toString();
+  const dateCreated = moment().toString();
 
   return ({
     name,
@@ -70,7 +70,7 @@ export const data = [
     'PM',
     'Building & Civil',
     'Tower Masts & Poles',
-    '08/05/2018',
+    '2018-05-20',
     [
       createTask(
         'Quarterly Maintenance (Tower Masts & Poles)',
@@ -78,7 +78,7 @@ export const data = [
         'Completed',
         [],
         2.5,
-        '20/05/2018',
+        '2018-05-20',
       ),
       createTask(
         'Quarterly Maintenance (Tower Masts & Poles)',
@@ -86,7 +86,7 @@ export const data = [
         'Active',
         [],
         2.5,
-        '20/05/2018',
+        '2018-05-20',
       ),
       createTask(
         'Quarterly Maintenance (Tower Masts & Poles)',
@@ -94,7 +94,7 @@ export const data = [
         'Not Started, Unassigned',
         [],
         2.5,
-        '20/05/2018',
+        '2018-05-20',
       ),
     ],
   ),
@@ -104,7 +104,7 @@ export const data = [
     'PM',
     'Building & Civil',
     'Horticultural (Landscaping)',
-    '18/05/2018',
+    '2018-05-20',
     [
       createTask(
         'Quarterly Maintenance (Tower Masts & Poles)',
@@ -112,7 +112,7 @@ export const data = [
         'Paused',
         [],
         2.5,
-        '20/05/2018',
+        '2018-05-20',
       ),
     ],
   ),

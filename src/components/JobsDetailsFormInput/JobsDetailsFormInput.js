@@ -8,7 +8,7 @@ import Select from 'material-ui/Select';
 import Typography from 'material-ui/Typography';
 import TextField from 'material-ui/TextField';
 
-import { JobFieldsContext } from 'views/Jobs/Details';
+import { JobsContext } from 'containers/App/App';
 
 const styles = theme => ({
   root: {
@@ -56,10 +56,12 @@ const styles = theme => ({
 });
 
 const JobsDetailsFormInput = ({ classes }) => (
-  <JobFieldsContext.Consumer>
+  <JobsContext.Consumer>
     {
       contextProps => {
-        const { handleInputChange, jobToAdd } = contextProps;
+        const { handleInputChange, currentJob } = contextProps;
+        const onChange = (event) => handleInputChange(event, 'currentJob');
+
         return (
           <div className={classes.root}>
             <div className={classes.formAreaRoot}>
@@ -68,9 +70,9 @@ const JobsDetailsFormInput = ({ classes }) => (
                 className={classes.heading}
               >
                 {
-                  jobToAdd.id
+                  currentJob.id
                     ?
-                    `Editing Job: ${jobToAdd.id}`
+                    `Editing Job: ${currentJob.id}`
                     :
                     'Adding New Job'
                 }
@@ -81,8 +83,8 @@ const JobsDetailsFormInput = ({ classes }) => (
                     Description
                   </InputLabel>
                   <Input
-                    value={jobToAdd.desc}
-                    onChange={handleInputChange}
+                    value={currentJob.desc}
+                    onChange={onChange}
                     name="desc"
                   />
                 </FormControl>
@@ -92,8 +94,8 @@ const JobsDetailsFormInput = ({ classes }) => (
                       Status
                     </InputLabel>
                     <Select
-                      value={jobToAdd.status}
-                      onChange={handleInputChange}
+                      value={currentJob.status}
+                      onChange={onChange}
                       input={<Input name="status" />}
                       autoWidth
                     >
@@ -108,8 +110,8 @@ const JobsDetailsFormInput = ({ classes }) => (
                       Demand/PM
                     </InputLabel>
                     <Select
-                      value={jobToAdd.ddorpm}
-                      onChange={handleInputChange}
+                      value={currentJob.ddorpm}
+                      onChange={onChange}
                       input={<Input name="ddorpm" />}
                       autoWidth
                     >
@@ -124,8 +126,8 @@ const JobsDetailsFormInput = ({ classes }) => (
                       Category
                     </InputLabel>
                     <Select
-                      value={jobToAdd.category}
-                      onChange={handleInputChange}
+                      value={currentJob.category}
+                      onChange={onChange}
                       input={<Input name="category" />}
                       autoWidth
                     >
@@ -138,8 +140,8 @@ const JobsDetailsFormInput = ({ classes }) => (
                       Associations
                     </InputLabel>
                     <Input
-                      value={jobToAdd.associations}
-                      onChange={handleInputChange}
+                      value={currentJob.associations}
+                      onChange={onChange}
                       name="associations"
                     />
                   </FormControl>
@@ -149,8 +151,8 @@ const JobsDetailsFormInput = ({ classes }) => (
                     <TextField
                       label="Due Date"
                       type="date"
-                      value={jobToAdd.dateDue}
-                      onChange={handleInputChange}
+                      value={currentJob.dateDue}
+                      onChange={onChange}
                       name="dateDue"
                       InputLabelProps={{
                         shrink: true,
@@ -167,7 +169,7 @@ const JobsDetailsFormInput = ({ classes }) => (
         );
       }
     }
-  </JobFieldsContext.Consumer>
+  </JobsContext.Consumer>
 );
 
 JobsDetailsFormInput.propTypes = {

@@ -30,82 +30,30 @@ const styles = theme => ({
 
 class Details extends Component {
   state = {
-    jobToAdd: {
-      id: this.props.match.params.jobId ? this.props.match.params.jobId : null,
-      desc: '',
-      status: '',
-      ddorpm: '',
-      category: '',
-      associations: '',
-      dateDue: '',
-      taskList: [],
-    },
-    newTask: {
-      name: '',
-      type: '',
-      assignedTo: [],
-      status: '',
-      hrsEst: 0,
-    },
-    changesUnsaved: false,
-    loadProgress: 'loading',
+    isLoading: true,
+    response: '',
+    saveEnabled: false,
   };
 
-  componentDidMount() {
-    const { contextProps } = this.props;
+  async componentWillMount() {
+    const { contextProps, match } = this.props;
+    const { jobId } = match.params;
 
-    if (this.state.jobToAdd.id) {
-      setTimeout(() => {
-        const job = contextProps.jobsData.find(jobObject =>
-          (jobObject.id === parseInt(this.state.jobToAdd.id, 10))
-        );
-        if (!job) {
-          this.setState({
-            loadProgress: 'job_not_found',
-          });
-        } else {
-          this.setState(prevState => ({
-            jobToAdd: {
-              ...prevState.jobToAdd,
-              desc: job.desc,
-              status: job.status,
-              ddorpm: job.ddorpm,
-              category: job.category,
-              associations: job.associations,
-              dateDue: moment(job.dateDue, 'DD/MM/YYYY').format('YYYY-MM-DD').toString(),
-              dateCreated: '',
-              tasksTotal: '',
-              tasksCompleted: '',
-              taskList: job.taskList,
-            },
-            loadProgress: 'loaded',
-          }));
-        }
-      }, 1500);
-    } else {
+    if (jobId) {
+      const response = await contextProps.getJobById(jobId);
       this.setState({
-        loadProgress: 'loaded',
+        response,
+        isLoading: false,
+        saveEnabled: response.status === 'JOB_FOUND',
       });
+    } else {
+      await contextProps.resetJob();
+      this.setState({
+        isLoading: false,
+        saveEnabled: true,
+      })
     }
   }
-
-  handleInputChange = (event) => {
-    const targetName = event.target.name;
-    const targetValue = event.target.value;
-
-    this.setState(prevState => ({
-      jobToAdd: {
-        ...prevState.jobToAdd,
-        [targetName]: targetValue,
-      },
-    }), () => {
-      if (!this.state.changesUnsaved) {
-        this.setState({
-          changesUnsaved: true,
-        });
-      }
-    });
-  };
 
   handleTaskDelete = (taskList) => {
     console.log('handleTaskDelete clicked');
@@ -138,59 +86,48 @@ class Details extends Component {
   };
 
   handleJobSave = async (event) => {
-    const {
-      contextProps, history, mainPath
-    } = this.props;
+    const { contextProps, history, mainPath } = this.props;
     const { updateJobsData } = contextProps;
-    const {
-      desc, status, ddorpm, category, associations, dateDue,
-    } = this.state.jobToAdd;
 
-    if (!(desc && status && ddorpm && category && associations && dateDue)) {
-      alert('Please fill in all required fields!');
-    } else {
-      const res = await updateJobsData(this.state.jobToAdd);
+    const { status, payload } = await updateJobsData();
 
-      if (res.status === 'new_job_created') {
-        history.replace(`${mainPath}/details/${res.payload.id}`);
-        this.setState(prevState => ({
-          jobToAdd: {
-            ...prevState.jobToAdd,
-            ...res.payload,
-          },
-        }));
-      }
+    switch (status) {
+      case 'JOB_CREATE_SUCCESS':
+        history.replace(`${mainPath}/details/${payload.id}`);
+        break;
+      case 'JOB_SAVE_ERROR':
+        alert(payload);
+        break;
+      case 'JOB_SAVE_SUCCESS':
+        break;
+      default:
+        break;
     }
   };
 
   render() {
     const {
-      classes, location, mainPath, history,
+      response, isLoading,
+    } = this.state;
+    const {
+      contextProps, classes, location, mainPath, history,
     } = this.props;
+    const {
+      currentJob,
+    } = contextProps;
 
     const renderOutput = () => {
-      switch (this.state.loadProgress) {
-        case 'loading':
-          return <div>Loading...</div>;
-        case 'loaded':
-          return (
-            <JobFieldsContext.Provider
-              value={
-                {
-                  handleTaskAdd: this.handleTaskAdd,
-                  handleTaskDelete: this.handleTaskDelete,
-                  handleInputChange: this.handleInputChange,
-                  jobToAdd: this.state.jobToAdd,
-                }
-              }
-            >
-              <JobsDetailsContainer />
-            </JobFieldsContext.Provider>
-          );
-        case 'job_not_found':
-          return <Redirect from={location.pathname} to={mainPath} />;
-        default:
-          return null;
+      if (isLoading) {
+        return <div>Loading...</div>;
+      } else {
+        switch (response.status) {
+          case 'JOB_NOT_FOUND':
+            return (
+              <h1>Job not found</h1>
+            );
+          default:
+            return <JobsDetailsContainer />
+        }
       }
     };
 
@@ -215,9 +152,11 @@ class Details extends Component {
             variant="raised"
             color="primary"
             onClick={this.handleJobSave}
-            disabled={this.state.loadProgress !== 'loaded'}
+            disabled={!this.state.saveEnabled}
           >
-            Save
+            {
+              currentJob.id ? 'Save' : 'Create'
+            }
           </Button>
         </Toolbar>
         <Paper elevation={1} className={classes.contentAreaWrapper}>

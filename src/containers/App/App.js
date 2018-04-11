@@ -10,6 +10,7 @@ import TopAppBar from 'components/TopAppBar/TopAppBar';
 import NavDrawer from 'components/NavDrawer/NavDrawer';
 import appRoutes from 'routes/appRoutes';
 import { data as jobsData } from 'helpers/jobsData';
+import { validateInput } from "helpers/utils"
 
 export const JobsContext = React.createContext();
 
@@ -55,10 +56,37 @@ const switchRoutes = (
   </Switch>
 );
 
+const initialJob = {
+  id: null,
+  desc: '',
+  status: '',
+  ddorpm: '',
+  category: '',
+  associations: '',
+  taskList: [],
+  createdDate: '',
+  dateDue: '',
+  totalTasks: '',
+  completedTasks: '',
+};
 
 class App extends React.Component {
   state = {
     jobsData,
+    currentJob: initialJob,
+    currentTask: {
+      name: '',
+      type: '',
+      estHours: 0,
+      assignedTo: [],
+    },
+    isLoading: false,
+  };
+
+  resetJob = async () => {
+    await this.setState({
+      currentJob: initialJob,
+    });
   };
 
   /*
@@ -68,45 +96,120 @@ class App extends React.Component {
     this.state.jobsData is set to that new array. Otherwise, this.state.jobsData
     is set to a new array [...this.state.jobsData, job].
    */
-  updateJobsData = async (job) => {
+  updateJobsData = async () => {
+    let job = { ...this.state.currentJob };
+    const jobsData = this.state.jobsData;
+
+    if (!validateInput(job, ['id', 'taskList', 'createdDate', 'totalTasks', 'completedTasks', ])) {
+      console.log(job);
+      return ({
+        status: 'JOB_SAVE_ERROR',
+        payload: 'Input fields unfilled',
+      });
+    }
+
     if (job.id) {
-      const oldJob = this.state.jobsData.find(jobObject => jobObject.id === parseInt(job.id, 10));
+      // Editing
+      const oldJob = jobsData.find(jobObject => jobObject.id === parseInt(job.id, 10));
+      if (!oldJob) {
+        return ({
+          status: 'JOB_SAVE_ERROR',
+          payload: `Job ${job.id.toString()} not found`,
+        });
+      }
       const oldJobIndex = this.state.jobsData.indexOf(oldJob);
-      this.setState(prevState => ({
+      job.tasksTotal = job.taskList.length;
+      job.tasksCompleted = job.taskList.filter(task => task.status === 'Completed').length;
+
+      await this.setState(prevState => ({
         jobsData: [
           ...prevState.jobsData.slice(0, oldJobIndex),
-          {...oldJob, ...job, id: parseInt(job.id, 10), dateDue: moment(job.dateDue, 'YYYY-MM-DD').format('DD/MM/YYYY').toString()},
+          { ...oldJob, ...job, },
           ...prevState.jobsData.slice(oldJobIndex + 1),
         ],
       }));
 
       return ({
-        status: 'job_saved',
+        status: 'JOB_SAVE_SUCCESS',
+        payload: '',
       });
 
     } else {
-      const largestIdJob = this.state.jobsData.reduce((largest, curr) => {
+      // Adding
+      const largestIdJob = jobsData.reduce((largest, curr) => {
         return curr.id > largest.id ? curr : largest;
       });
 
-      const newJob =
-        {
-          ...job,
-          id: largestIdJob.id + 1,
-          dateCreated: moment().format('DD/MM/YYYY').toString(),
-          tasksTotal: 0,
-          tasksCompleted: 0,
-        };
+      job.id = largestIdJob.id + 1;
+      job.dateCreated = moment().format('YYYY-MM-DD').toString();
+      job.tasksTotal = job.taskList.length;
+      job.tasksCompleted = job.taskList.filter(task => task.status === 'Completed').length;
 
       await this.setState(prevState => ({
-        jobsData: [...prevState.jobsData, newJob],
+        currentJob: job,
+        jobsData: [...prevState.jobsData, job],
       }));
 
       return ({
-        status: 'new_job_created',
-        payload: newJob,
+        status: 'JOB_CREATE_SUCCESS',
+        payload: job.id,
       });
     }
+  };
+
+  handleInputChange = (event, parentObject) => {
+    const targetName = event.target.name;
+    const targetValue = event.target.value;
+
+    if (parentObject) {
+      this.setState(prevState => ({
+        [parentObject]: {
+          ...prevState[parentObject],
+          [targetName]: targetValue,
+        },
+      }));
+    } else {
+      this.setState({
+        [targetName]: targetValue,
+      });
+    }
+
+  };
+
+  getJobById = async (jobId) => {
+    let foundJob;
+    let response;
+
+    await this.setState({
+      isLoading: true,
+    }, () => {
+      foundJob = this.state.jobsData.find((job) => {
+        return (job.id === parseInt(jobId, 10));
+      });
+
+      if (foundJob) {
+        this.setState({
+          currentJob: { ...foundJob },
+          isLoading: false,
+        }, () => {
+          response = {
+            status: 'JOB_FOUND',
+            payload: '',
+          };
+        });
+      } else {
+        this.setState({
+          isLoading: false,
+        }, () => {
+          response = {
+            status: 'JOB_NOT_FOUND',
+            payload: '',
+          };
+        });
+      }
+    });
+
+    return response;
   };
 
   render() {
@@ -125,7 +228,13 @@ class App extends React.Component {
             value={
               {
                 jobsData: this.state.jobsData,
+                currentJob: this.state.currentJob,
+                currentTask: this.state.currentTask,
+                isLoading: this.state.isLoading,
+                resetJob: this.resetJob,
                 updateJobsData: this.updateJobsData,
+                getJobById: this.getJobById,
+                handleInputChange: this.handleInputChange,
               }
             }
           >
