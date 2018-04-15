@@ -20,7 +20,8 @@ const styles = theme => ({
     flex: 9,
   },
   formAreaRoot: {
-    flex: 4,
+    // flex: 4,
+    minWidth: '520px',
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'column',
@@ -164,7 +165,7 @@ const JobsDetailsFormInput = ({ classes }) => (
                 <div className={classes.formRowSpacer} />
               </form>
             </div>
-            <div className={classes.formSpacer} />
+            {/*<div className={classes.formSpacer} />*/}
           </div>
         );
       }
