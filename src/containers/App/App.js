@@ -70,22 +70,31 @@ const initialJob = {
   completedTasks: '',
 };
 
+const initialTask = {
+  name: '',
+  type: '',
+  estHours: 0,
+  assignedTo: [],
+  dateDue: '',
+};
+
 class App extends React.Component {
   state = {
     jobsData,
     currentJob: initialJob,
-    currentTask: {
-      name: '',
-      type: '',
-      estHours: 0,
-      assignedTo: [],
-    },
+    currentTask: initialTask,
     isLoading: false,
   };
 
   resetJob = async () => {
     await this.setState({
       currentJob: initialJob,
+    });
+  };
+
+  resetTask = async () => {
+    await this.setState({
+      currentTask: initialTask,
     });
   };
 
@@ -101,7 +110,6 @@ class App extends React.Component {
     const jobsData = this.state.jobsData;
 
     if (!validateInput(job, ['id', 'taskList', 'createdDate', 'totalTasks', 'completedTasks', ])) {
-      console.log(job);
       return ({
         status: 'JOB_SAVE_ERROR',
         payload: 'Input fields unfilled',
@@ -176,6 +184,44 @@ class App extends React.Component {
 
   };
 
+  handleTaskDelete = (event, selectedTasks) => {
+    console.log(selectedTasks);
+  };
+
+  handleTaskAdd = async (event) => {
+    let task = { ...this.state.currentTask };
+    const job = { ...this.state.currentJob };
+
+    if (!validateInput(task)) {
+      return ({
+        status: 'TASK_CREATE_ERROR',
+        payload: 'Input fields unfilled',
+      });
+    }
+
+    const largestIdTask = job.taskList.reduce((largest, curr) => {
+      return curr.id > largest.id ? curr : largest;
+    }, 0);
+
+    console.log(job.taskList);
+
+    task.id = largestIdTask ? largestIdTask.id + 1 : 1;
+    task.dateCreated = moment().format('YYYY-MM-DD').toString();
+    task.status = task.assignedTo.length >= 1 ? 'Assigned, pending' : 'Unassigned';
+
+    await this.setState(prevState => ({
+      currentJob: {
+        ...prevState.currentJob,
+        taskList: [...prevState.currentJob.taskList, task],
+      },
+    }));
+
+    return ({
+      status: 'TASK_CREATE_SUCCESS',
+      payload: task.id,
+    });
+  };
+
   getJobById = async (jobId) => {
     let foundJob;
     let response;
@@ -232,9 +278,12 @@ class App extends React.Component {
                 currentTask: this.state.currentTask,
                 isLoading: this.state.isLoading,
                 resetJob: this.resetJob,
+                resetTask: this.resetTask,
                 updateJobsData: this.updateJobsData,
                 getJobById: this.getJobById,
                 handleInputChange: this.handleInputChange,
+                handleTaskDelete: this.handleTaskDelete,
+                handleTaskAdd: this.handleTaskAdd,
               }
             }
           >

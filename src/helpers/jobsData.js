@@ -44,13 +44,13 @@ export function createData(
 export function createTask(
   name,
   type,
-  status,
   assignedTo,
   estHours,
   dateDue
 ) {
 
-  const dateCreated = moment().toString();
+  const dateCreated = moment().format('YYYY-MM-DD').toString();
+  const status = assignedTo.length >= 1 ? 'Assigned, pending' : 'Unassigned';
 
   return ({
     name,
@@ -75,7 +75,6 @@ export const data = [
       createTask(
         'Quarterly Maintenance (Tower Masts & Poles)',
         'ESCORT',
-        'Completed',
         [],
         2.5,
         '2018-05-20',
@@ -83,7 +82,6 @@ export const data = [
       createTask(
         'Quarterly Maintenance (Tower Masts & Poles)',
         'ESCORT',
-        'Active',
         [],
         2.5,
         '2018-05-20',
@@ -91,7 +89,6 @@ export const data = [
       createTask(
         'Quarterly Maintenance (Tower Masts & Poles)',
         'ESCORT',
-        'Not Started, Unassigned',
         [],
         2.5,
         '2018-05-20',
@@ -109,7 +106,6 @@ export const data = [
       createTask(
         'Quarterly Maintenance (Tower Masts & Poles)',
         'ESCORT',
-        'Paused',
         [],
         2.5,
         '2018-05-20',

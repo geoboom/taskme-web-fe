@@ -213,7 +213,9 @@ class CustomTable2 extends React.Component {
                         className={classes.button}
                         variant="raised"
                         key={index}
-                        onClick={control.onClick}
+                        onClick={control.selectedAsParam
+                          ? (event) => control.onClick(event, this.state.selected)
+                          : control.onClick}
                       >
                         {control.name}
                       </Button>

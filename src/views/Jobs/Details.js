@@ -11,8 +11,6 @@ import JobsDetailsContainer from 'containers/JobsDetailsContainer';
 import { JobsContext } from 'containers/App/App';
 import { taskColumnData, createData } from 'helpers/jobsData';
 
-export const JobFieldsContext = React.createContext();
-
 const styles = theme => ({
   root: {
     flex: 1,
@@ -54,10 +52,6 @@ class Details extends Component {
       })
     }
   }
-
-  handleTaskDelete = (taskList) => {
-    console.log('handleTaskDelete clicked');
-  };
 
   handleTaskAdd = (taskList) => {
     let taskListToAdd = [];
