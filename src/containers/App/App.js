@@ -5,6 +5,7 @@ import { withStyles } from 'material-ui/styles';
 import { Switch, Redirect, Route } from 'react-router-dom';
 import lightBlue from 'material-ui/colors/lightBlue';
 import moment from 'moment';
+import { Provider } from 'react-redux';
 
 import TopAppBar from 'components/TopAppBar/TopAppBar';
 import NavDrawer from 'components/NavDrawer/NavDrawer';
@@ -262,35 +263,37 @@ class App extends React.Component {
     const { classes, location } = this.props;
 
     return (
-      <div className={classes.root}>
-        <TopAppBar />
-        <NavDrawer
-          routes={appRoutes}
-          route={location.pathname}
-        />
-        <div className={classes.contentContainer}>
-          <div className={classes.toolbar} />
-          <JobsContext.Provider
-            value={
-              {
-                jobsData: this.state.jobsData,
-                currentJob: this.state.currentJob,
-                currentTask: this.state.currentTask,
-                isLoading: this.state.isLoading,
-                resetJob: this.resetJob,
-                resetTask: this.resetTask,
-                updateJobsData: this.updateJobsData,
-                getJobById: this.getJobById,
-                handleInputChange: this.handleInputChange,
-                handleTaskDelete: this.handleTaskDelete,
-                handleTaskAdd: this.handleTaskAdd,
+      <Provider store={store}>
+        <div className={classes.root}>
+          <TopAppBar />
+          <NavDrawer
+            routes={appRoutes}
+            route={location.pathname}
+          />
+          <div className={classes.contentContainer}>
+            <div className={classes.toolbar} />
+            <JobsContext.Provider
+              value={
+                {
+                  jobsData: this.state.jobsData,
+                  currentJob: this.state.currentJob,
+                  currentTask: this.state.currentTask,
+                  isLoading: this.state.isLoading,
+                  resetJob: this.resetJob,
+                  resetTask: this.resetTask,
+                  updateJobsData: this.updateJobsData,
+                  getJobById: this.getJobById,
+                  handleInputChange: this.handleInputChange,
+                  handleTaskDelete: this.handleTaskDelete,
+                  handleTaskAdd: this.handleTaskAdd,
+                }
               }
-            }
-          >
-            {switchRoutes}
-          </JobsContext.Provider>
+            >
+              {switchRoutes}
+            </JobsContext.Provider>
+          </div>
         </div>
-      </div>
+      </Provider>
     );
   }
 }

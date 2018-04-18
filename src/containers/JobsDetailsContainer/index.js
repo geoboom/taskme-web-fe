@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 
 import TabbedContainerComponent from 'components/TabbedContainerComponent/TabbedContainerComponent';
-import JobsDetailsFormInput from 'components/JobsDetailsFormInput/JobsDetailsFormInput';
+import JobsDetailsFormInput from 'containers/JobsDetailsContainer/JobsDetailsFormInput';
 import tabbedContent from 'containers/JobsDetailsContainer/jobDetailsTabs';
 
 

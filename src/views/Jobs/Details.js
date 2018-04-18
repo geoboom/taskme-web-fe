@@ -33,7 +33,7 @@ class Details extends Component {
     saveEnabled: false,
   };
 
-  async componentWillMount() {
+  async componentDidMount() {
     const { contextProps, match } = this.props;
     const { jobId } = match.params;
 
